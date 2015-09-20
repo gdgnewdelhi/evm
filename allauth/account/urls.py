@@ -1,9 +1,10 @@
-from django.conf.urls import url
+from django.conf.urls import patterns, url
 from django.views.generic import RedirectView
 
 from . import views
 
-urlpatterns = [
+urlpatterns = patterns(
+    "",
     url(r"^signup/$", views.signup, name="account_signup"),
     url(r"^login/$", views.login, name="account_login"),
     url(r"^logout/$", views.logout, name="account_logout"),
@@ -31,4 +32,4 @@ urlpatterns = [
         name="account_reset_password_from_key"),
     url(r"^password/reset/key/done/$", views.password_reset_from_key_done,
         name="account_reset_password_from_key_done"),
-]
+)
