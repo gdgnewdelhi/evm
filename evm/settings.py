@@ -27,12 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
 INSTALLED_APPS = (
     'allauth',
-    # 'allauth.account', # not required as of now
+    'allauth.account', # not required as of now
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.github',
@@ -59,11 +60,13 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'evm.urls'
 
+# PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR+"/evm/templates",],
         'APP_DIRS': True,
+        'DIRS': ['events/templates','attendees/templates'],
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -71,6 +74,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.core.context_processors.request',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -116,5 +120,4 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
-SITE_ID = 1
 
